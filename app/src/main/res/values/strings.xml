@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">KotlinBaseApp</string>
+    <string name="page_title">page_title</string>
+    <string name="search">search</string>
+    <string name="content_description_search">search git repos</string>
+</resources>
