@@ -10,10 +10,11 @@ import com.slbrazil.baseapp.databinding.MainActivityBinding
 
 import com.slbrazil.baseapp.ui.main.MainFragment
 import com.slbrazil.baseapp.ui.main.MainViewModel
+import com.slbrazil.baseapp.ui.main.MainViewModelFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels() { MainViewModelFactory() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

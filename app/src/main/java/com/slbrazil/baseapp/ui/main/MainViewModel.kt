@@ -1,11 +1,10 @@
 package com.slbrazil.baseapp.ui.main
 
-import GitHubRepository
+import com.slbrazil.gitrepo.GitHubRepository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.paging.PagedList
 import com.slbrazil.github_common_model.GithubRepo
 
 class MainViewModel constructor(repository: GitHubRepository) : ViewModel() {
