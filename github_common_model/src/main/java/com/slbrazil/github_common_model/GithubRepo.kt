@@ -4,8 +4,8 @@ class GithubRepo {
 
      var ownerName: String = ""
      var repoName: String = ""
-     var noOfForks: Int = 0
-     var noOfStarts: Int = 0
+     var noOfForks: String = ""
+     var noOfStars: String = ""
      var avatar: String = "";
 
      override fun equals(other: Any?): Boolean {
@@ -17,7 +17,7 @@ class GithubRepo {
           if (ownerName != other.ownerName) return false
           if (repoName != other.repoName) return false
           if (noOfForks != other.noOfForks) return false
-          if (noOfStarts != other.noOfStarts) return false
+          if (noOfStars != other.noOfStars) return false
           if (avatar != other.avatar) return false
 
           return true
@@ -26,8 +26,8 @@ class GithubRepo {
      override fun hashCode(): Int {
           var result = ownerName.hashCode()
           result = 31 * result + repoName.hashCode()
-          result = 31 * result + noOfForks
-          result = 31 * result + noOfStarts
+          result = 31 * result + noOfForks.hashCode()
+          result = 31 * result + noOfStars.hashCode()
           result = 31 * result + avatar.hashCode()
           return result
      }

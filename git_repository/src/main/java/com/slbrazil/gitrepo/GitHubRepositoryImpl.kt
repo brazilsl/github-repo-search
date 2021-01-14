@@ -13,14 +13,18 @@ import com.slbrazil.github_common_model.GithubRepo
 
         val repo1 = GithubRepo()
         repo1.repoName = "test repo 1"
-        repo1.ownerName = "shanitha test repo"
+        repo1.ownerName = "shanitha 1"
+
         val repo2 = GithubRepo()
         repo2.repoName = "test repo 2"
-        repo2.ownerName = "shanitha"
-        val repoList = arrayListOf(repo1, repo2)
-        var repos: MutableLiveData<List<GithubRepo>> = MutableLiveData<List<GithubRepo>>()
-        repos.value = repoList
-        return repoList;
+        repo2.ownerName = "shanitha 2"
+
+        val repo3 = GithubRepo()
+        repo3.repoName = "test repo 3"
+        repo3.ownerName = "shanitha 3"
+
+        val repoList = arrayListOf(repo1, repo2, repo3)
+        return repoList
 
     }
 }
