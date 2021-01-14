@@ -1,5 +1,5 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'kotlin-android'
 }
 
@@ -8,13 +8,13 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.slbrazil.baseapp"
         minSdkVersion 23
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -30,35 +30,15 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-
-    buildFeatures {
-        dataBinding true
-    }
 }
 
 dependencies {
-    def paging_version = "2.1.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.1.0'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
-    
-    //paging dependencies
-    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
-    testImplementation "androidx.paging:paging-common-ktx:$paging_version"
-
-    implementation "androidx.activity:activity-ktx:1.1.0"
-    //simplify the fragment api
-    implementation "androidx.fragment:fragment-ktx:1.2.5"
-    //provides a lifecycle scope. Any coroutine launched in this scope is canceled when the Lifecycle is destroyed.
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.2.0"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation project(':github_common_model')
-    implementation project(':git_repository')
 }
