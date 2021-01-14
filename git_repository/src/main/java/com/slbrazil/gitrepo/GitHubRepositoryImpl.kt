@@ -8,7 +8,7 @@ import com.slbrazil.github_common_model.GithubRepo
  class GitHubRepositoryImpl() : GitHubRepository {
     private val TAG : String = GitHubRepositoryImpl::class.java.simpleName
 
-    override fun getRepos(search: String): LiveData<List<GithubRepo>> {
+    override fun getRepos(search: String): List<GithubRepo> {
         Log.d(TAG, "searching: $search")
 
         val repo1 = GithubRepo()
@@ -20,7 +20,7 @@ import com.slbrazil.github_common_model.GithubRepo
         val repoList = arrayListOf(repo1, repo2)
         var repos: MutableLiveData<List<GithubRepo>> = MutableLiveData<List<GithubRepo>>()
         repos.value = repoList
-        return repos
+        return repoList;
 
     }
 }

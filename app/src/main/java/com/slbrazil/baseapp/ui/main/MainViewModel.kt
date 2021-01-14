@@ -13,21 +13,21 @@ class MainViewModel constructor(repository: GitHubRepository) : ViewModel() {
     private val TAG : String = MainViewModel::class.java.simpleName
 
     private val searchInput : MutableLiveData<String> = MutableLiveData<String>()
-    private lateinit var  gitRepos : LiveData<List<GithubRepo>>
+    private var  gitRepos : MutableLiveData<List<GithubRepo>> = MutableLiveData<List<GithubRepo>>()
 
     fun setSearchInput(text: String){
 
         searchInput.value = text;
         Log.d(TAG, "search input: ${searchInput.value}" )
-        gitRepos = repo.getRepos(text)
+        gitRepos.value = repo.getRepos(text)
     }
 
-    fun getSearchInput() :LiveData<String>{
+    fun getSearchInput() : LiveData<String>{
 
         return searchInput
     }
 
     fun getRepos() : LiveData<List<GithubRepo>> {
-        return gitRepos;
+        return gitRepos
     }
 }
