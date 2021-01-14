@@ -1,4 +1,4 @@
-package com.slbrazil.common_model
+package com.slbrazil.github_repo_service
 
 import org.junit.Test
 

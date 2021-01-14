@@ -1,4 +1,4 @@
-package com.slbrazil.common_model
+package com.slbrazil.github_repo_service
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.slbrazil.common_model.test", appContext.packageName)
+        assertEquals("com.slbrazil.github_repo_service.test", appContext.packageName)
     }
 }

@@ -1,5 +1,5 @@
+include ':github_repo_service'
 include ':github_common_model'
-include ':common_model'
-include ':git_repository'
+include ':github_repository'
 include ':app'
 rootProject.name = "KotlinBaseApp"
