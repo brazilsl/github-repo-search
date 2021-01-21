@@ -11,10 +11,15 @@ import com.slbrazil.baseapp.databinding.MainActivityBinding
 import com.slbrazil.baseapp.ui.main.MainFragment
 import com.slbrazil.baseapp.ui.main.MainViewModel
 import com.slbrazil.baseapp.ui.main.MainViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: MainViewModel by viewModels() { MainViewModelFactory() }
+    @Inject
+    lateinit var viewModelFactory: MainViewModelFactory
+    private val viewModel: MainViewModel by viewModels() { viewModelFactory}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +40,6 @@ class MainActivity : AppCompatActivity() {
             }
             else -> false
         } }
-
 
     }
 }

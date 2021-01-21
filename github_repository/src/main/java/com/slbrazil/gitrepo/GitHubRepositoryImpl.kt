@@ -1,11 +1,11 @@
 package com.slbrazil.gitrepo
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.slbrazil.github_common_model.GithubRepo
+import com.slbrazil.github_repo_service.GithubService
+import javax.inject.Inject
 
- class GitHubRepositoryImpl() : GitHubRepository {
+class GitHubRepositoryImpl @Inject constructor(githubService: GithubService) : GithubRepository {
     private val TAG : String = GitHubRepositoryImpl::class.java.simpleName
 
     override fun getRepos(search: String): List<GithubRepo> {

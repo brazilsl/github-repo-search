@@ -1,13 +1,13 @@
 package com.slbrazil.baseapp.ui.main
 
-import com.slbrazil.gitrepo.GitHubRepository
+import com.slbrazil.gitrepo.GithubRepository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.slbrazil.github_common_model.GithubRepo
 
-class MainViewModel constructor(repository: GitHubRepository) : ViewModel() {
+class MainViewModel constructor(repository: GithubRepository) : ViewModel() {
 
     private val repo = repository
     private val TAG : String = MainViewModel::class.java.simpleName

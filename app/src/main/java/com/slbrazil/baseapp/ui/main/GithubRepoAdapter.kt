@@ -1,15 +1,14 @@
 package com.slbrazil.baseapp.ui.main
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.slbrazil.baseapp.databinding.RecyclerViewItemBinding
 import com.slbrazil.github_common_model.GithubRepo
+import javax.inject.Inject
 
 //todo add paging
-class GitHubRepoAdapter : RecyclerView.Adapter<GitHubRepoAdapter.ViewHolder>() {
+class GithubRepoAdapter @Inject constructor() : RecyclerView.Adapter<GithubRepoAdapter.ViewHolder>() {
 
     var repoList: List<GithubRepo> = arrayListOf()
 
