@@ -2,6 +2,7 @@ package com.slbrazil.baseapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.EditorInfo
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
@@ -35,10 +36,14 @@ class MainActivity : AppCompatActivity() {
         binding.searchField.setOnEditorActionListener { v, actionId, event ->
             return@setOnEditorActionListener when (actionId) {
             EditorInfo.IME_ACTION_SEARCH -> {
+                Log.d("activity", "update search")
                 viewModel.setSearchInput(binding.searchField.text.toString())
                 true
             }
-            else -> false
+            else -> {
+                Log.d("activity", "actionId: $actionId")
+                false
+            }
         } }
 
     }

@@ -4,7 +4,7 @@
   <data>
     <variable
         name="gitHubRepo"
-        type="com.slbrazil.github_common_model.GithubRepo" />
+        type="com.slbrazil.github_common_model.Item" />
   </data>
 <LinearLayout
     android:id="@+id/gitRepoViewHolder"
@@ -25,7 +25,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:padding="5dp"
-      android:text="@{gitHubRepo.repoName}"
+      android:text="@{gitHubRepo.name}"
       tools:text="@tools:sample/lorem" />
 
   <TextView
@@ -34,7 +34,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:padding="5dp"
-      android:text="@{gitHubRepo.ownerName}"
+      android:text="@{gitHubRepo.owner.login}"
       tools:text="@tools:sample/lorem" />
 
   <TextView
@@ -43,7 +43,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:padding="5dp"
-      android:text="@{gitHubRepo.noOfStars}"
+      android:text="@{Integer.toString(gitHubRepo.stargazers_count)}"
       tools:text="@tools:sample/lorem" />
 
   <TextView
@@ -52,7 +52,7 @@
       android:layout_height="wrap_content"
       android:layout_gravity="center"
       android:padding="5dp"
-      android:text="@{gitHubRepo.noOfForks}"
+      android:text="@{Integer.toString(gitHubRepo.forks_count)}"
       tools:text="@tools:sample/lorem" />
 
 </LinearLayout>

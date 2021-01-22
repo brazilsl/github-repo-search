@@ -9,7 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.slbrazil.baseapp.databinding.MainFragmentBinding
-import com.slbrazil.github_common_model.GithubRepo
+import com.slbrazil.github_common_model.GitRepositories
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -22,6 +22,7 @@ class MainFragment : Fragment() {
     }
     @Inject lateinit var viewModelFactory: MainViewModelFactory
     @Inject lateinit var adapter: GithubRepoAdapter
+
     private lateinit var binding: MainFragmentBinding
     private val TAG : String = MainFragment::class.java.simpleName
     private val viewModel: MainViewModel by activityViewModels() { viewModelFactory }
@@ -35,12 +36,21 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         binding.list.adapter = adapter
-        val repoObserver = Observer<List<GithubRepo>> { repos ->
+
+        val repoObserver = Observer<GitRepositories> { repos ->
             // update the recyclerview
-            Log.d(TAG, "update recyclerview with: " + repos.joinToString(","))
-           adapter.setItems(repos)
+            Log.d(TAG, "update recyclerview with: " + repos.items.size)
+           adapter.setItems(repos.items)
         }
-        viewModel.getRepos().observe(viewLifecycleOwner, repoObserver)
+
+        val searchObserver = Observer<String> { keyword ->
+            // observe the repo
+            Log.d(TAG, "should search for: $keyword")
+            viewModel.getRepos().observe(viewLifecycleOwner, repoObserver)
+        }
+        Log.d(TAG, "observing search")
+        viewModel.getSearchInput().observe(viewLifecycleOwner, searchObserver )
+
     }
 
 }

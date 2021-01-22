@@ -5,7 +5,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.slbrazil.github_common_model.GithubRepo
+import androidx.lifecycle.liveData
+import com.slbrazil.github_common_model.GitRepositories
+import kotlinx.coroutines.Dispatchers
 
 class MainViewModel constructor(repository: GithubRepository) : ViewModel() {
 
@@ -13,13 +15,13 @@ class MainViewModel constructor(repository: GithubRepository) : ViewModel() {
     private val TAG : String = MainViewModel::class.java.simpleName
 
     private val searchInput : MutableLiveData<String> = MutableLiveData<String>()
-    private var  gitRepos : MutableLiveData<List<GithubRepo>> = MutableLiveData<List<GithubRepo>>()
+    private var  gitRepos : MutableLiveData<GitRepositories> = MutableLiveData<GitRepositories>()
 
-    fun setSearchInput(text: String){
+    fun setSearchInput(text: String)  {
 
         searchInput.value = text;
         Log.d(TAG, "search input: ${searchInput.value}" )
-        gitRepos.value = repo.getRepos(text)
+
     }
 
     fun getSearchInput() : LiveData<String>{
@@ -27,7 +29,10 @@ class MainViewModel constructor(repository: GithubRepository) : ViewModel() {
         return searchInput
     }
 
-    fun getRepos() : LiveData<List<GithubRepo>> {
-        return gitRepos
+    fun getRepos() : LiveData<GitRepositories> {
+         return liveData<GitRepositories>(Dispatchers.IO) {
+            Log.d(TAG, "getting repos for query: ${searchInput.value}" )
+           emit(repo.getRepos(searchInput?.value ?: ""))
+        }
     }
 }

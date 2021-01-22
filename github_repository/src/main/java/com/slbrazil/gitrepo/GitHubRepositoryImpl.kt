@@ -1,17 +1,19 @@
 package com.slbrazil.gitrepo
 
 import android.util.Log
-import com.slbrazil.github_common_model.GithubRepo
+import com.slbrazil.github_common_model.GitRepositories
 import com.slbrazil.github_repo_service.GithubService
 import javax.inject.Inject
 
 class GitHubRepositoryImpl @Inject constructor(githubService: GithubService) : GithubRepository {
     private val TAG : String = GitHubRepositoryImpl::class.java.simpleName
+    private val service = githubService
 
-    override fun getRepos(search: String): List<GithubRepo> {
-        Log.d(TAG, "searching: $search")
 
-        val repo1 = GithubRepo()
+    override suspend fun getRepos(keywords: String): GitRepositories {
+        Log.d(TAG, "searching: $keywords")
+
+     /*   val repo1 = GithubRepo()
         repo1.repoName = "test repo 1"
         repo1.ownerName = "shanitha 1"
 
@@ -23,8 +25,9 @@ class GitHubRepositoryImpl @Inject constructor(githubService: GithubService) : G
         repo3.repoName = "test repo 3"
         repo3.ownerName = "shanitha 3"
 
-        val repoList = arrayListOf(repo1, repo2, repo3)
-        return repoList
+        val repoList = arrayListOf(repo1, repo2, repo3)*/
+
+        return service.search(keywords, 1, 10)
 
     }
 }

@@ -4,19 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.slbrazil.baseapp.databinding.RecyclerViewItemBinding
-import com.slbrazil.github_common_model.GithubRepo
+import com.slbrazil.github_common_model.Item
 import javax.inject.Inject
 
 //todo add paging
 class GithubRepoAdapter @Inject constructor() : RecyclerView.Adapter<GithubRepoAdapter.ViewHolder>() {
 
-    var repoList: List<GithubRepo> = arrayListOf()
+    var repoList: List<Item> = arrayListOf()
 
     class ViewHolder(binding: RecyclerViewItemBinding) : RecyclerView.ViewHolder(binding.gitRepoViewHolder) {
 
         val repoBinding = binding
 
-        fun bind(repo: GithubRepo){
+        fun bind(repo: Item){
 
             repoBinding.gitHubRepo = repo
         }
@@ -24,7 +24,8 @@ class GithubRepoAdapter @Inject constructor() : RecyclerView.Adapter<GithubRepoA
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-       val binding = RecyclerViewItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+       val binding = RecyclerViewItemBinding.inflate(LayoutInflater.from(parent.context), parent,
+           false)
         return ViewHolder(binding)
     }
 
@@ -38,7 +39,7 @@ class GithubRepoAdapter @Inject constructor() : RecyclerView.Adapter<GithubRepoA
         holder.bind(repoList[position])
     }
 
-    fun setItems(repos: List<GithubRepo>){
+    fun setItems(repos: List<Item>){
         repoList = repos
         notifyDataSetChanged()
     }
